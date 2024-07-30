@@ -8,7 +8,7 @@ import ErrorMessage from "../components/ErrorMessage";
 const NeogPrc = () => {
   const [selectedCategories, setSelectedCategories] = useState("");
 
-  const apiUrl = "https://projects-api-delta.vercel.app/api/projects";
+  const apiUrl = "https://projects-api-delta.vercel.app/api/neog-prc-projects";
   const { data: projects = [], loading, error } = useFetch(apiUrl);
 
   const handleProjectData = (categories) => {

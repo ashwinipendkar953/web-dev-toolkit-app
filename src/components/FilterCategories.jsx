@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const FilterCategories = ({ handleCategoriesData, categoriesData }) => {
+const FilterCategories = ({ handleCategoriesData }) => {
   const projectCategories = ["HTML", "Bootstrap", "JavaScript"];
   const [categories, setCategories] = useState(["All"]);
 

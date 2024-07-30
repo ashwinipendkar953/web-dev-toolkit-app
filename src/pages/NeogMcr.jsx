@@ -8,7 +8,7 @@ import ErrorMessage from "../components/ErrorMessage";
 const NeogMcr = () => {
   const [selectedCategories, setSelectedCategories] = useState("");
 
-  const apiUrl = "https://projects-api-delta.vercel.app/api/mcr";
+  const apiUrl = "https://projects-api-delta.vercel.app/api/neog-mcr";
   const { data: mcrData = [], loading, error } = useFetch(apiUrl);
 
   const handleMcrData = (categories) => {
@@ -38,6 +38,7 @@ const NeogMcr = () => {
             description,
             replUrl,
             githubUrl,
+            instructionsUrl,
           } = project;
           return (
             <Card
@@ -49,6 +50,7 @@ const NeogMcr = () => {
               description={description}
               replUrl={replUrl}
               githubUrl={githubUrl}
+              instructionsUrl={instructionsUrl}
             />
           );
         })}

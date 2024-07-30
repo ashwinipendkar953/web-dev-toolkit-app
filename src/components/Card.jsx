@@ -7,6 +7,7 @@ const Card = ({
   name,
   category,
   description,
+  instructionsUrl,
   replUrl,
   githubUrl,
 }) => (
@@ -20,10 +21,19 @@ const Card = ({
             {name}{" "}
             <span className="bg-warning rounded px-2 py-1">{category}</span>
           </h5>
-          <p className="card-text">{description}</p>
+          <p className="card-text mb-0">{description}</p>
+
           {replUrl && <Button color="outline-dark" name="Repl" url={replUrl} />}
 
           <Button color="outline-dark" name="Github" url={githubUrl} />
+
+          {instructionsUrl && (
+            <Button
+              color="outline-primary"
+              name="Instructions"
+              url={instructionsUrl}
+            />
+          )}
         </div>
       </div>
     </Link>
