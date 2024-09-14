@@ -1,30 +1,39 @@
 import { useState } from "react";
 import useFetch from "../customHooks/useFetch";
 import Card from "../components/Card";
-import FilterCategories from "../components/FilterCategories";
+import DisplayCategories from "../components/DisplayCategories";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 
 const Mcr = () => {
-  const [selectedCategories, setSelectedCategories] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const apiUrl = "https://projects-api-delta.vercel.app/api/projects";
+  const apiUrl = `${import.meta.env.VITE_APP_API_URL}/api/projects`;
   const { data: projects = [], loading, error } = useFetch(apiUrl);
 
-  const handleProjectData = (categories) => {
-    setSelectedCategories(categories);
+  // Get unique categories from the projects
+  const categoryList = [
+    ...new Set(projects?.map((project) => project.category)),
+  ];
+
+  // Handle category change
+  const handleCategory = (category) => {
+    setSelectedCategory(category);
   };
 
-  const filteredProjects = selectedCategories.includes("All")
-    ? projects
-    : projects.filter((project) =>
-        selectedCategories.includes(project.category)
-      );
+  // Filter projects based on selected category
+  const filteredProjects = projects.filter(
+    (project) => project.category === selectedCategory
+  );
 
   return (
     <main className="container py-4">
       <h1>MCR</h1>
-      <FilterCategories handleCategoriesData={handleProjectData} />
+      {/* Pass categories and handleCategory function */}
+      <DisplayCategories
+        categories={categoryList}
+        handleCategory={handleCategory}
+      />{" "}
       {loading && <LoadingSpinner loadingMsg="Loading MCR..." />}
       {error && <ErrorMessage />}
       <div className="row py-4 g-3">
