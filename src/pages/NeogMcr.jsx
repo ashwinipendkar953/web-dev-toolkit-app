@@ -21,9 +21,10 @@ const NeogMcr = () => {
   };
 
   // Filter projects based on selected category
-  const filteredMCR = mcr?.filter(
-    (project) => project?.category === selectedCategory
-  );
+  const filteredMCR =
+    selectedCategory === ""
+      ? mcr
+      : mcr?.filter((project) => project?.category === selectedCategory);
 
   return (
     <main className="container py-4">

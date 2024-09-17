@@ -5,9 +5,8 @@ const DisplayCategories = ({ categories, handleCategory }) => {
   // console.log(selectedCategory);
 
   useEffect(() => {
-    setSelectedCategory(categories[0]);
     handleCategory(selectedCategory);
-  }, [selectedCategory, categories, handleCategory]);
+  }, [handleCategory, categories, selectedCategory]);
 
   return (
     <div className="pt-4">

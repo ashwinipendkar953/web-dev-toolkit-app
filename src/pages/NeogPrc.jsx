@@ -22,9 +22,10 @@ const NeogPrc = () => {
   };
 
   // Filter projects based on selected category
-  const filteredProjects = projects.filter(
-    (project) => project.category === selectedCategory
-  );
+  const filteredProjects =
+    selectedCategory === ""
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
     <main className="container py-4">
